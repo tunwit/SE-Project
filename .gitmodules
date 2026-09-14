@@ -1,0 +1,9 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/CSKU-Classroom/471-69-se-be-final-project-jingjang-jomgan.git
+[submodule "471-69-se-fe-final-project-jingjang-jomgan"]
+	path = 471-69-se-fe-final-project-jingjang-jomgan
+	url = https://github.com/CSKU-Classroom/471-69-se-fe-final-project-jingjang-jomgan.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/CSKU-Classroom/471-69-se-fe-final-project-jingjang-jomgan.git
