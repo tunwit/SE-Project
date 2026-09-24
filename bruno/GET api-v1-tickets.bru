@@ -5,13 +5,9 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/api/v1/tickets
+  url: {{baseUrl}}/{{basePath}}/tickets
   body: none
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{token}}
+  auth: inherit
 }
 
 docs {

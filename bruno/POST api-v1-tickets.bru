@@ -5,13 +5,9 @@ meta {
 }
 
 post {
-  url: {{baseUrl}}/api/v1/tickets
+  url: {{baseUrl}}/{{basePath}}/tickets
   body: json
-  auth: bearer
-}
-
-auth:bearer {
-  token: {{token}}
+  auth: inherit
 }
 
 headers {
