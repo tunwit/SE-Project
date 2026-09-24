@@ -1,0 +1,15 @@
+meta {
+  name: patch /api/v1/tickets/:id/status
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseUrl}}/{{basePath}}/tickets/{{ticketId}}/status
+  body: none
+  auth: inherit
+}
+
+docs {
+  Advances an owned ticket by one step: OPEN -> IN_PROGRESS -> CLOSED. Set ticketId to the ticket's DisplayID from GET or POST /api/v1/tickets. Requires a valid bearer JWT for the ticket owner. Returns 200 on success, 401 without authentication, 403 for another user's ticket, 404 if the ticket does not exist, or 409 if the ticket is already CLOSED.
+}
