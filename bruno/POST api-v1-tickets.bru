@@ -1,0 +1,32 @@
+meta {
+  name: post /api/v1/tickets
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/v1/tickets
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Cannot sign in to KU All Login",
+    "typeOfProblem": "KU All Login",
+    "description": "The system says the password is incorrect.",
+    "tel": "0812345678"
+  }
+}
+
+docs {
+  Creates a ticket for the authenticated user. Requires title, typeOfProblem, description, and tel. typeOfProblem must match a category name. Use application/json without an image, or multipart/form-data with the same fields and an optional image file (JPEG, PNG, or WebP, at most 10 MB).
+}

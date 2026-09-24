@@ -1,0 +1,19 @@
+meta {
+  name: get /api/v1/tickets
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api/v1/tickets
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  Returns tickets belonging to the authenticated user. Requires a valid bearer JWT.
+}

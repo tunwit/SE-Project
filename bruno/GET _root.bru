@@ -1,0 +1,15 @@
+meta {
+  name: get /
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/
+  body: none
+  auth: none
+}
+
+docs {
+  Returns the API service name as plain text.
+}
