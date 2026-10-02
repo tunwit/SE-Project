@@ -1,0 +1,25 @@
+meta {
+  name: patch /api/v1/admin/users/:userId/role
+  type: http
+  seq: 18
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/admin/users/{{userID}}/role
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "role": "HELPDESK"
+  }
+}
+
+docs {
+  Updates a user role. userId is the target user UUID (userID from GET /api/v1/me). Requires ADMIN. role must be USER, HELPDESK or ADMIN.
+}

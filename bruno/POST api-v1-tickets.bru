@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{baseUrl}}/{{basePath}}/tickets
+  url: {{baseUrl}}/api/v1/tickets
   body: json
   auth: inherit
 }
@@ -19,10 +19,11 @@ body:json {
     "title": "Cannot sign in to KU All Login",
     "typeOfProblem": "KU All Login",
     "description": "The system says the password is incorrect.",
-    "tel": "0812345678"
+    "tel": "0812345678",
+    "refSender": ""
   }
 }
 
 docs {
-  Creates a ticket for the authenticated user. Requires title, typeOfProblem, description, and tel. typeOfProblem must match a category name. Use application/json without an image, or multipart/form-data with the same fields and an optional image file (JPEG, PNG, or WebP, at most 10 MB).
+  Creates a requester ticket. Required: title, typeOfProblem matching a category, description, tel. Optional refSender. Returns 201 with data.displayId. For attachments use multipart/form-data with the same fields and up to five image files (JPEG, PNG or WebP; each at most 10 MB).
 }

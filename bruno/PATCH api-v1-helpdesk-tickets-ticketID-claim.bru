@@ -1,0 +1,15 @@
+meta {
+  name: patch /api/v1/helpdesk/tickets/:ticketID/claim
+  type: http
+  seq: 14
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/helpdesk/tickets/{{ticketID}}/claim
+  body: none
+  auth: inherit
+}
+
+docs {
+  Claims a ticket for the current HELPDESK user. ticketID is the ticket UUID. No request body.
+}

@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/helpdesk/tickets/:ticketID/notes
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseUrl}}/api/v1/helpdesk/tickets/{{ticketID}}/notes
+  body: none
+  auth: inherit
+}
+
+docs {
+  Lists notes for a ticket. ticketID is the ticket UUID. Requires HELPDESK or ADMIN.
+}

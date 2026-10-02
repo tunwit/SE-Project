@@ -1,0 +1,25 @@
+meta {
+  name: post /api/v1/helpdesk/tickets/:ticketID/notes
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{baseUrl}}/api/v1/helpdesk/tickets/{{ticketID}}/notes
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "content": "Contacted the requester by phone."
+  }
+}
+
+docs {
+  Creates a ticket note. ticketID is the ticket UUID. Requires HELPDESK or ADMIN. Returns 201.
+}

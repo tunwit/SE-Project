@@ -1,9 +1,13 @@
 # Bruno API collection
 
-Open this directory in Bruno (`bruno` at the project root) and select the **Local** environment.
+Open `bruno` in Bruno and select the **Local** environment. Set the secret environment variable `token` to a valid JWT. All `/api/v1` requests inherit Bearer authentication from `collection.bru`; `/` and `/health` use no auth.
 
-The environment points to `http://localhost:3000`. Set `token` to a valid bearer JWT issued by the configured identity provider. The collection uses this variable for Bearer authentication, which `GET /api/v1/me`, `GET /api/v1/tickets`, `POST /api/v1/tickets`, and `PATCH /api/v1/tickets/:id/status` inherit.
+This collection covers all 18 HTTP routes registered by the backend. Set `ticketID` to a ticket UUID (`id` in a list response), `displayID` to the human readable ticket ID (`displayId`), and `userID` to a user UUID before using parameterized requests. `PATCH /api/v1/tickets/:id/status` uses `displayID`; ticket detail, messages, claim, and notes use `ticketID`.
 
-`POST /api/v1/tickets` has a JSON example body by default. To attach an image, switch the request body to multipart form data and provide `title`, `typeOfProblem`, `description`, and `tel`, with one optional `image` file (JPEG, PNG, or WebP, at most 10 MB). `typeOfProblem` must match a category name in the database.
+Ticket creation accepts JSON or multipart form data. For attachments, switch the body to multipart and include the same text fields plus up to five `image` files (JPEG, PNG or WebP, each at most 10 MB). Message creation accepts JSON text or multipart with one `image` file and no text. The examples use JSON.
 
-For `PATCH /api/v1/tickets/:id/status`, set `ticketId` in the selected Bruno environment to an owned ticket's `id` from the GET or POST response. Each request advances its status one step from `OPEN` to `IN_PROGRESS` to `CLOSED`; no request body is needed.
+Role access is enforced by the backend: `/api/v1/helpdesk/*` requires HELPDESK or ADMIN, and `/api/v1/admin/*` requires ADMIN. The status update additionally requires the ticket to be assigned to the current HELPDESK user.
+
+## WebSocket `/ws`
+
+Connect to `ws://localhost:3000/ws`. This endpoint is a WebSocket protocol, so use a WebSocket client. The first frame must be `{"type":"auth","token":"<JWT>"}` within 10 seconds. After the `authenticated` response, send `{"type":"subscribe","channel":"ticket.messages"}` to receive accessible tickets and `message.created` events. Use `unsubscribe` with the same channel to leave it. The WebSocket endpoint authenticates through its first frame rather than the collection Bearer header.

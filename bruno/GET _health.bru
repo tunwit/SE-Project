@@ -6,10 +6,10 @@ meta {
 
 get {
   url: {{baseUrl}}/health
-  body: json
+  body: none
   auth: none
 }
 
 docs {
-  Checks PostgreSQL and MinIO connectivity. Returns 200 when both are available, otherwise 503.
+  Checks PostgreSQL and MinIO. Returns 200 when healthy or 503 when unavailable.
 }

@@ -1,0 +1,26 @@
+meta {
+  name: post /api/v1/tickets/:ticketID/messages
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api/v1/tickets/{{ticketID}}/messages
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "content": "Please check my account.",
+    "clientMessageId": ""
+  }
+}
+
+docs {
+  Sends one text message to an accessible ticket. Optional clientMessageId supports client correlation. To send an image instead, use multipart/form-data with one image file and no text content. Accepted image types: JPEG, PNG, WebP; maximum 10 MB. Returns 201.
+}

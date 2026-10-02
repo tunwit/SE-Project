@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/tickets/:ticketID
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/api/v1/tickets/{{ticketID}}
+  body: none
+  auth: inherit
+}
+
+docs {
+  Returns ticket detail and attachments. ticketID is the UUID id from a ticket list, not displayId.
+}

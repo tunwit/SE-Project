@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/tickets/:ticketID/messages
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/v1/tickets/{{ticketID}}/messages
+  body: none
+  auth: inherit
+}
+
+docs {
+  Lists messages for an accessible ticket. ticketID is the ticket UUID.
+}
