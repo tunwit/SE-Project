@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/admin/audits/resource/:resourceType
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api/v1/admin/audits/resource/{{resourceType}}
+  body: none
+  auth: inherit
+}
+
+docs {
+  Lists audit events by resource type. Allowed values: ticket, message, note, user. Requires ADMIN; invalid type returns 400.
+}

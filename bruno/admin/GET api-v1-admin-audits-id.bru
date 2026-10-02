@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/admin/audits/:id
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/api/v1/admin/audits/{{auditID}}
+  body: none
+  auth: inherit
+}
+
+docs {
+  Returns one audit event by UUID. Set auditID in the Local environment. Requires ADMIN; invalid UUID returns 400 and unknown UUID returns 404.
+}

@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/admin/audits/actor/:actorID
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/api/v1/admin/audits/actor/{{actorID}}
+  body: none
+  auth: inherit
+}
+
+docs {
+  Lists audit events by actor UUID. Set actorID in the Local environment. Requires ADMIN; invalid UUID returns 400.
+}

@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/admin/audits
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/v1/admin/audits
+  body: none
+  auth: inherit
+}
+
+docs {
+  Lists all audit events. Requires ADMIN. Returns data.audits with uuid, audit_type, resource_type, resource_id, actor_id and created_at.
+}

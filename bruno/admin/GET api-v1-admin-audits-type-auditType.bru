@@ -1,0 +1,15 @@
+meta {
+  name: get /api/v1/admin/audits/type/:auditType
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/v1/admin/audits/type/{{auditType}}
+  body: none
+  auth: inherit
+}
+
+docs {
+  Lists audit events by audit type. Allowed values: create_ticket, update_ticket, change_status, create_note, create_message, claim_ticket, change_role. Requires ADMIN; invalid type returns 400.
+}
